@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLM - Register</title>
+  <style>
+    body {
+      background-color: #10182f; 
+      color: #fff; 
+      font-family: Arial, sans-serif;
+      margin: 0; 
+    }
+    .header {
+      padding: 1rem;
+      text-align: center;
+      background-color: #10182f; 
+      color: #fff; 
+    }
+    .header h1 {
+      color: #fff; 
+    }
+    .content {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #10182f; 
+    }
+    h1 {
+      font-size: 24px;
+      text-align: center;
+      color: cyan; 
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #10182f; 
+      color: #fff; 
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      box-sizing: border-box;
+      border: none;
+      border-radius: 4px;
+      background-color: #fff; 
+      color: #10182f; 
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #ccc; 
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>Lumino</h1>
+  </header>
+  <br><br>
+  <div class="content">
+    <h1>Create an Account</h1>
+    <form action="captcha.html" method="POST" onsubmit="return validateForm()">
+      <input type="text" name="firstname" placeholder="First Name" required><br>
+      <input type="text" name="lastname" placeholder="Last Name" required><br>
+      <input type="email" name="email" placeholder="Email" required><br>
+      <input type="password" id="password" name="password" placeholder="Password (at least 8 characters, 1 letter, 1 number, 1 symbol)" pattern="(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}" title="Password must contain at least 8 characters, 1 letter, 1 number, and 1 symbol" required><br>
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" required><br>
+      <button type="submit" class="button">Create Account</button>
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
+      var password = document.getElementById('password').value;
+      var confirmPassword = document.getElementById('confirmPassword').value;
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return false; // Prevent form submission
+      }
+      return true; // Proceed with form submission
+    }
+  </script>
+</body>
+</html>
