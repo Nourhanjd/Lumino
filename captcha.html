@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple CAPTCHA</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: grey;
+    }
+    
+    .captcha-container {
+        text-align: center;
+    }
+    
+    #captcha-canvas {
+        border: 10px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    #captcha-input {
+        margin: 10px 0;
+        padding: 5px;
+        font-size: 1rem;
+    }
+    
+    #captcha-submit {
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <div class="captcha-container">
+        <canvas id="captcha-canvas" width="300" height="80"></canvas>
+        <input type="text" id="captcha-input" placeholder="Enter the text shown">
+        <button id="captcha-submit">Submit</button>
+    </div>
+    
+    <script>
+        const canvas = document.getElementById('captcha-canvas');
+        const ctx = canvas.getContext('2d');
+        const input = document.getElementById('captcha-input');
+    
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const captchaText = generateCaptchaText();
+    
+        drawCaptcha();
+    
+        const button = document.getElementById('captcha-submit');
+        button.addEventListener('click', () => {
+            veri(input);
+        });
+    
+        function veri(inputElement) {
+            if (inputElement.value === captchaText) {
+                console.log(1);
+                window.location.href = "demoWeb.html";
+            } else {
+                alert("Not verified, try again");
+                const captchaText = generateCaptchaText();
+                drawCaptcha();
+            }
+        }
+    
+        function generateCaptchaText() {
+            let captchaText = '';
+            for (let i = 0; i < 6; i++) {
+                captchaText += characters[Math.floor(Math.random() * characters.length)];
+            }
+            return captchaText;
+        }
+    
+        function drawCaptcha() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.font = '30px Arial';
+            ctx.fillStyle = '#000';
+            ctx.fillText(captchaText, 10, 50);
+        }
+    </script>
+</body>
+</html>
