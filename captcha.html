@@ -6,7 +6,7 @@
     <title>Simple CAPTCHA</title>
     <style>
     body {
-        font-family: Arial, sans-serif;
+        font-family: 'Roboto', sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -43,7 +43,10 @@
         <button id="captcha-submit">Submit</button>
     </div>
     
-    <script>
+    
+</body>
+
+  <script>
         const canvas = document.getElementById('captcha-canvas');
         const ctx = canvas.getContext('2d');
         const input = document.getElementById('captcha-input');
@@ -84,5 +87,4 @@
             ctx.fillText(captchaText, 10, 50);
         }
     </script>
-</body>
 </html>
