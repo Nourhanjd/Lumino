@@ -81,10 +81,21 @@
       background-color: #ccc;
     }
 
-    .updates {
+    .feedback {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin-top: 2rem;
-      font-size: 1.1rem;
-      color: #fff;
+    }
+
+    .feedback-button {
+      font-size: 24px;
+      cursor: pointer;
+      margin: 0 10px;
+    }
+
+    .feedback-button:hover {
+      color: cyan;
     }
   </style>
 </head>
@@ -102,8 +113,22 @@
       <button class="button">What are tips to improve public speaking skills?</button>
       <button class="button">Draft an email with a packing list for an upcoming trip</button>
     </div>
+    <div class="feedback">
+      <button class="feedback-button" id="thumbs-up">👍</button>
+      <button class="feedback-button" id="thumbs-down">👎</button>
+    </div>
     <span class="updates">See the latest updates to Lumino App</span>
   </div>
+
+  <!-- Script to handle feedback -->
+  <script>
+    document.getElementById('thumbs-up').addEventListener('click', function() {
+        alert('Thanks for your feedback!');
+    });
+
+    document.getElementById('thumbs-down').addEventListener('click', function() {
+        alert('We appreciate your input. Please let us know how we can improve.');
+    });
+  </script>
 </body>
 </html>
-  
